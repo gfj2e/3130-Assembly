@@ -1,0 +1,44 @@
+Group 8: Anlee Nguyen and Garrett Johnson
+CLA 8: Control Circuit
+Boolean expressions for each circuit
+
+PC_BUS: t0 + t2
+
+AR_LD: (t0 + t2 + t4(d1 + d2)) !clock
+
+PC_LD: (t4(d5 + d6z)) !clock
+
+PC_INC: (t1 + t3(d1 + d2 + d6!z) !clock 
+
+DR_LD: (t1 + t3(d1 + d2 + d5 + d6z) + t5(d1 + d2)) !clock 
+
+DR_BUS: t2 + t4(d1 + d2 + d5 + d6z) + t6(d1 + d2)
+
+R_LD: t3!clockd3
+
+R_BUS: t3(d4 + d8 + d9 + d12 + d13) 
+
+S_LD: t3!clockd0
+
+ACC_CLR: t3d11
+
+ACC_LD: (t3(d4 + d8 + d9 + d10 + d11 + d12 + d13 + d14 + d15) + t6d1) !clock
+
+ACC_BUS: t3(d3 + d7) + t5d2 
+
+ALU_SEL: 
+   S2: d12 + d13 + d14 + d15
+   S1: d1 + d4 + d10 + d14 + d15 
+   S0: d1 + d4 + d9 + d13 + d15  
+
+Z_LD: 1 
+
+OUTR_LD: t3!clockd7
+
+RAM_WE: (t6d2) !clock
+
+RAM_OE: (t1 + t3(d1 + d2 + d5 + d6z) + t5d1) !clock 
+
+IR_LD: t2!clock
+
+SC_CLR: t4(d3 + d4 + d6!z + d7 + d8 + d9 + d10 + d11 + d12 + d13 + d14 + d15) + t5(d5 + d6z) + t7(d1 + d2)

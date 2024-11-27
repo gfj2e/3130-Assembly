@@ -1,0 +1,13 @@
+; Garrett Johnson
+; RSC Subtracting A from F
+JMP start
+; Variables
+var1: F     ; 15
+var2: A     ; 10
+start:       ; the label 'start'. The jump statement earlier jumps here
+    LDAC var2 ; Load the first variable into Accumulator
+    MVAC     ; Move the contents of Accumulator to R
+    LDAC var1 ; Load the second variable into Accumulator
+    SUB       ; Subtract A from F
+    OUT       ; Send Accumulator contents to Output Register
+HALT      ; Stop execution

@@ -1,0 +1,62 @@
+; N^3 program
+; Garrett Johnson
+JMP start
+; Variables
+N: 3                ; N
+sum: 0              ; variable for sum
+one: 1              ; for decrementing
+sum2: 0
+counter1: 0
+counter2: 0
+start:              ; the label 'start'. The jump statement earlier jumps here
+    LDAC N          ; Load counter into accumulator
+    JMPZ done
+    STAC counter1   ; for first counter
+    CLAC            ; clear ACC
+    LDAC one
+    MVAC
+    LDAC N
+    SUB
+    STAC counter2   ; for second counter
+    LDAC counter1   ; load first counter
+    
+first_loop:
+    JMPZ load        ; check to see if counter = 0
+    STAC counter1    ; load counter back into memory address A
+    LDAC N           ; load N into ACC 
+    MVAC             ; Load N into R
+    LDAC sum         ; Load sum into ACC
+    ADD              ; Add n + n
+    STAC sum         ; Store sum
+    LDAC one         ; Load 1 into ACC
+    MVAC             ; Load 1 into R
+    LDAC counter1    ; Load first counter into ACC
+    SUB              ; counter - 1
+    JMP first_loop   ; Jump back to beggining
+
+load:
+    LDAC sum         ; Load sum into ACC
+    STAC sum2        ; store sum from loop for adding to sum
+    STAC sum         
+    LDAC counter2   ; Load counter to check for 0
+    JMP second_loop ; Jump to next loop
+
+second_loop:
+
+    JMPZ done       ; Finish loop if final sum reached
+    STAC counter2   ; Store counter 2 after JUMPZ check
+    LDAC sum2       ; Load sum2 to add to sum
+    MVAC            ; Load sum2 to R
+    LDAC sum        ; Load sum into ACC
+    ADD             ; Add together
+    STAC sum        ; Store new sum
+    LDAC one        ; Load one to decrement
+    MVAC            ; Load into R
+    LDAC counter2   ; Load 2nd counter
+    SUB             ; Decrement
+    JMP second_loop ; Jump back to beggining
+
+done:
+    LDAC sum        ; Load sum to display
+    OUT             ; Output
+HALT

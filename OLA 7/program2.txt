@@ -1,0 +1,61 @@
+; RSC Subtracting A from F
+JMP start
+; Variables
+var1: A9     ; 15
+var2: 2B     ; 10
+var3: AF
+var4: D1
+start:       ; the label 'start'. The jump statement earlier jumps here
+    ; 
+    LDAC var1 ; A9 + 2B
+    MVAC     
+    LDAC var2 
+    ADD       
+    OUT       
+    STAC 0006
+    CLAC
+    
+    LDAC var2 ; For subtraction A9 - 2B
+    MVAC      
+    LDAC var1
+    SUB
+    OUT
+    STAC 0007
+    CLAC
+    
+    MOVR    ; 2B + 2B
+    ADD
+    STAC 0008
+    OUT
+    CLAC
+    
+    LDAC var1   ; A9 and 2B
+    AND
+    STAC 0009
+    OUT
+    CLAC
+    
+    LDAC var1   ; A9 or 2B
+    OR
+    STAC 000A
+    OUT
+    CLAC
+    
+    LDAC var1   ; ASHR A9
+    ASHR
+    STAC 000B
+    OUT
+    CLAC
+    
+    LDAC var3   ; AF + 1
+    INC
+    STAC 000C
+    OUT
+    CLAC
+    
+    LDAC var4   ; Not D1
+    NOT
+    STAC 000D
+    OUT
+    CLAC
+HALT      ; Stop execution
